@@ -174,11 +174,11 @@
       <div class="flex flex-col gap-8 reveal">
         <h1 class="font-display hero-stroke text-5xl sm:text-7xl lg:text-[120px] leading-[0.9]">
   MOMO<br>
-  <span class="text-pink-200 hero-stroke">BONK’S SISTER</span>
+  <span class="text-pink-200 hero-stroke">TAKE THE PINK PILL</span>
 </h1>
 
         <p class="text-white/90 font-semibold max-w-xl text-base sm:text-lg leading-relaxed">
-          SHIBA POWER • COMMUNITY • PURE MEME ENERGY
+          FIRST FEMALE SHIBA - THE PEOPLE'S DOG COIN OF THIS CYCLE - PURE MEMETIC ENERGY - BONKS SISTER - ORGANIC MOVEMENT
         </p>
         <div class="flex gap-5 flex-wrap">
           <a href="https://raydium.io/swap/?outputMint=G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk&inputMint=sol" class="btn-primary">
@@ -191,6 +191,14 @@
       </div>
     </div>
   </div>
+  
+  <!-- Вот сюда вставляем таблетку -->
+  <img
+  src="assets/pill.png"
+  alt="Pill"
+  class="absolute bottom-0 right-72 w-[550px] h-auto drop-shadow-[5px_5px_0_rgba(0,0,0,0.6)] hidden md:block"
+/>
+  
   <img src="assets/momo-mini2.png" class="absolute top-8 right-8 w-32 animate-bob reveal reveal-delay-2" alt="Sticker">
 </section>
 
@@ -199,12 +207,14 @@
   <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
     <div class="reveal">
       <h2 class="font-display comic-outline hero-stroke text-5xl md:text-7xl mb-6">ABOUT MOMO</h2>
-      <p class="text-lg font-semibold tracking-wide leading-relaxed mb-4">
-        MOMO IS THE CHEEKY SISTER OF BONK – PASTEL PINK ENERGY READY TO POUNCE.
-      </p>
+      
       <p class="text-base md:text-lg leading-relaxed">
-        BORN ON SOLANA. BUILT FOR FUN, COMMUNITY & A KAWAII DASH OF MEME MAGIC.
-        SHE FETCHES GAINS — NOT STICKS. JOIN THE PACK & RUN WITH MOMO.
+        MOMO IS BONKS CHEEKY LITTLE SISTER - PASTEL PINK ENERGY READY TO POUNCE
+		BORN ON SOLANA. BUILT FOR FUN. BY THE PEOPLE. FOR THE PEOPLE.
+		100% FAIR LAUNCHED, NO CABAL, NO BUNDLES.
+      </p>
+	  <p class="text-lg font-semibold tracking-wide leading-relaxed mb-4">
+        MOMO FETCHES GAINS, NOT STICKS
       </p>
     </div>
     <div class="relative reveal reveal-delay-1">
@@ -335,7 +345,14 @@ function copyContract() {
 
 
 <!-- GRID (Tokenomics & How To Buy) -->
-<section id="tokenomics" class="w-full grid md:grid-cols-2 border-y-4 border-black">
+<section id="tokenomics" class="relative w-full grid md:grid-cols-2 border-y-4 border-black">
+  <!-- Общий центрирующийся ГИФ -->
+  <img
+    src="assets/hellomomo.gif"
+    alt="Hello MOMO"
+    class="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 md:w-56 mt-[-145px] pointer-events-none z-10"
+  />
+
   <div class="relative bg-[#FFE7AF] p-14 min-h-[480px] flex flex-col justify-between reveal">
     <div>
       <h3 class="font-display comic-outline hero-stroke text-5xl md:text-6xl mb-6">TOKENOMICS</h3>
@@ -347,8 +364,9 @@ function copyContract() {
       </ul>
     </div>
     <a href="https://dexscreener.com/solana/epvwqejcnenvsnyecma2955bgtqjk2ptxuggrvtiffg2" class="btn-primary w-max">CHART</a>
-    <img src="assets/momo-mini3.png" class="absolute bottom-4 right-4 w-28 animate-bob" alt="">
+    <img src="assets/rocketmomo.gif" class="absolute bottom-4 right-12 w-[500px] animate-bob hidden md:block" alt="">
   </div>
+
   <div class="relative bg-[#FFC6E1] p-14 min-h-[480px] flex flex-col justify-between reveal reveal-delay-1">
     <div>
       <h3 class="font-display comic-outline hero-stroke text-5xl md:text-6xl mb-6">HOW TO BUY</h3>
@@ -361,15 +379,43 @@ function copyContract() {
       </ol>
     </div>
     <a href="https://raydium.io/swap/?outputMint=G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk&inputMint=sol" class="btn-primary w-max">RAYDIUM</a>
-    <img src="assets/momo-mini4.png" class="absolute bottom-4 left-4 w-28 animate-bob" alt="">
+    <img src="assets/laymomo.gif" class="absolute bottom-4 right-12 w-[530px] hidden md:block" alt="">
   </div>
 </section>
+
+<!-- CENTRALIZED EXCHANGES -->
+<section id="exchanges" class="w-full bg-pink-50 py-24">
+  <div class="max-w-[1100px] mx-auto px-6 md:px-12">
+    <h2 class="font-display comic-outline hero-stroke text-5xl md:text-6xl text-center mb-12">
+      CENTRALIZED EXCHANGES
+    </h2>
+    <div class="flex flex-wrap justify-center items-center gap-8">
+      <a href="https://www.lbank.com/trade/momo_usdt" target="_blank" class="hover:scale-110 transition">
+        <img src="assets/lbank-logo.png" alt="LBank" class="w-40 h-auto" />
+      </a>
+      <a href="https://www.mexc.com/exchange/MOMO_USDT" target="_blank" class="hover:scale-110 transition">
+        <img src="assets/mexc-logo.png" alt="MEXC" class="w-40 h-auto" />
+      </a>
+      <a href="https://www.bitmart.com/trade/type=spot&symbol=MOMO_USDT" target="_blank" class="hover:scale-110 transition">
+        <img src="assets/bitmart-logo.png" alt="BitMart" class="w-40 h-auto" />
+      </a>
+      <a href="https://www.kcex.com/exchange/MOMO_USDT" target="_blank" class="hover:scale-110 transition">
+        <img src="assets/kcex-logo.png" alt="KCEX" class="w-40 h-auto" />
+      </a>
+      <a href="https://www.gate.io/price/momo-key-key" target="_blank" class="hover:scale-110 transition">
+        <img src="assets/gate-logo.png" alt="Gate.io" class="w-40 h-auto" />
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
 <!-- PROOF -->
 <section id="proof" class="py-24 bg-gray-50">
   <div class="max-w-[1700px] mx-auto px-6 md:px-12">
     <div class="reveal flex flex-col items-center gap-10">
-      <h2 class="font-display comic-outline hero-stroke text-5xl md:text-7xl">PROOF</h2>
+      <h2 class="font-display comic-outline hero-stroke text-5xl md:text-7xl">PROOF OF BEING BONK'S SIS</h2>
       <div class="bg-white p-10 rounded-3xl shadow-[8px_8px_0_#000] border-4 border-black max-w-3xl w-full reveal reveal-delay-1">
         <div class="relative">
           <img src="assets/proof-image.png"
@@ -384,39 +430,31 @@ function copyContract() {
   </div>
 </section>
 
-<!-- SOCIALS -->
-<section id="socials" class="py-20 bg-pink-50">
-  <div class="max-w-[1200px] mx-auto px-6 md:px-12 text-center reveal">
-    <h2 class="font-display comic-outline hero-stroke text-5xl md:text-6xl mb-10">COMMUNITY</h2>
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-10">
-
-      <a href="https://x.com/Momo_bonk"
-         target="_blank" rel="noopener"
-         class="group relative block w-[180px] sm:w-[200px]">
-        <img src="assets/twitter.png"
-             alt="Twitter / X"
-             class="w-full h-auto rounded-2xl transition
-                    group-hover:scale-105 group-active:scale-95" />
-        <span class="sr-only">Go to MOMO on X / Twitter</span>
+<!-- COMMUNITY -->
+<section id="community" class="relative py-24 bg-pink-50 overflow-hidden">
+  <div class="max-w-[1100px] mx-auto px-6 md:px-12 flex flex-col items-center gap-10">
+    <h2 class="font-display comic-outline hero-stroke text-5xl md:text-7xl">COMMUNITY</h2>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a href="https://x.com/Momo_bonk" target="_blank" aria-label="Twitter">
+        <img src="assets/twitter.png" class="w-32 md:w-40" alt="Twitter">
       </a>
-
-      <a href="https://www.instagram.com/shibainumomo0217/"
-         target="_blank" rel="noopener"
-         class="group relative block w-[180px] sm:w-[200px]">
-        <img src="assets/inst.png"
-             alt="Instagram"
-             class="w-full h-auto rounded-2xl transition
-                    group-hover:scale-105 group-active:scale-95" />
-        <span class="sr-only">Go to MOMO on Instagram</span>
+      <a href="https://www.instagram.com/shibainumomo0217/" target="_blank" aria-label="Instagram">
+        <img src="assets/inst.png" class="w-32 md:w-40" alt="Instagram">
       </a>
-
     </div>
-
   </div>
+
+  <!-- Гифка чуть левее центра -->
+  <img
+    src="assets/staymomo.gif"
+    alt="Stay with MOMO"
+    class="pointer-events-none absolute bottom-0 left-1/4 w-[100px] md:w-64"
+  />
 </section>
 
+
 <!-- FOOTER -->
-<footer class="relative py-10 bg-white text-center text-gray-700 text-sm border-t-4 border-black">
+<footer class="relative py-10 bg-pink-300 text-center text-gray-700 text-sm border-t-4 border-black">
   <div class="mb-4 flex justify-center items-center space-x-2">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -427,8 +465,11 @@ function copyContract() {
     </a>
   </div>
   © 2025 MOMO Coin
-  <img src="assets/footer.png" alt="MOMO Footer" class="absolute bottom-0 left-0 w-32 md:w-40 select-none pointer-events-none">
+  <img src="assets/footer.png" alt="MOMO Footer"
+       class="absolute bottom-0 left-0 w-32 md:w-40 select-none pointer-events-none">
 </footer>
+
+
 
 <!-- SCRIPTS -->
 <script>
