@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>MOMO Coin – Female Shiba</title>
+<link rel="icon" href="assets/favicon.png" type="image/png" />
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme:{
+      extend:{
+        fontFamily:{
+          sans:['Inter','ui-sans-serif','system-ui'],
+		  fredoka: ['"Fredoka"','Inter','sans-serif'],
+          display:['Luckiest Guy','cursive']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior:smooth; }
+  /* Outline / stroke */
+  .hero-stroke,
+  .comic-outline {
+    color:#fff;
+    -webkit-text-stroke:4px #000;
+    text-shadow:0 0 2px rgba(0,0,0,.35);
+    paint-order:stroke fill;
+  }
+  @media (max-width:768px){
+    .hero-stroke, .comic-outline { -webkit-text-stroke:2px #000; }
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .8s ease, transform .8s ease;
+    will-change:transform, opacity;
+  }
+  .reveal.visible {
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-delay-1 { transition-delay:.15s; }
+  .reveal-delay-2 { transition-delay:.30s; }
+  .reveal-delay-3 { transition-delay:.45s; }
+
+  /* Comic buttons */
+  .btn-primary {
+    position:relative;
+    background:#fff;
+    color:#d81f7d;
+    font-weight:700;
+    padding:.95rem 2.1rem;
+    border-radius:1.2rem;
+    border:3px solid #000;
+    box-shadow:6px 6px 0 #000;
+    transition:.18s;
+    display:inline-block;
+  }
+  .btn-primary:hover {
+    transform:translate(-3px,-3px);
+    box-shadow:10px 10px 0 #000;
+  }
+  .btn-primary:active {
+    transform:translate(0,0);
+    box-shadow:3px 3px 0 #000;
+  }
+
+  /* Bob loop */
+  @keyframes bob {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-8px); }
+  }
+  .animate-bob { animation:bob 1.7s ease-in-out infinite; }
+
+  /* Copy pulse */
+  @keyframes pulseCopy {
+    0% { box-shadow:0 0 0 0 rgba(0,0,0,0.6); }
+    70% { box-shadow:0 0 0 18px rgba(0,0,0,0); }
+    100% { box-shadow:0 0 0 0 rgba(0,0,0,0); }
+  }
+  .copied-anim { animation:pulseCopy .8s ease-out; }
+
+  /* Mobile slide menu (inside header) */
+  .mobi-menu {
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .mobi-menu.open { max-height:260px; }
+
+  /* Smooth hide hero -> avoid layout jump */
+  body { background:#FFEFF7; }
+
+  /* Scrollbar (optional aesthetic) */
+  ::-webkit-scrollbar { width:10px; }
+  ::-webkit-scrollbar-track { background:#ffeaf5; }
+  ::-webkit-scrollbar-thumb { background:#f08abf; border-radius:20px; border:2px solid #ffeaf5; }
+  ::-webkit-scrollbar-thumb:hover { background:#d94d97; }
+  
+  
+  .hero-stroke {
+  /* белый цвет текста */
+  color: #fff;
+  /* основной комикс‑эффект: сразу несколько теней по периметру */
+  text-shadow:
+    /* двойной сдвиг вниз‑вправо */
+    4px 4px 0 #000,
+    6px 6px 0 #000,
+    /* нижняя тень (чуть сильнее) */
+    0px 4px 0 #000,
+    /* по периметру «обводка» */
+   -2px -2px 0 #000,
+   -2px  2px 0 #000,
+    2px -2px 0 #000,
+    2px  2px 0 #000;
+}
+
+
+</style>
+</head>
+<body class="font-sans text-gray-900">
+
+<!-- HEADER -->
+<header class="fixed left-1/2 -translate-x-1/2 top-0 z-40 mt-4 w-[92%] md:w-[60%] rounded-full bg-pink-500/85 backdrop-blur-md border-2 border-black shadow-[6px_6px_0_#000] px-6 md:px-10 py-3">
+  <div class="flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2">
+      <img src="assets/momo-new.png" alt="MOMO Icon" class="w-9 h-9 rounded-full border-2 border-black shadow" />
+      <span class="font-display text-2xl tracking-wide -mt-1">MOMO</span>
+    </a>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex gap-8 font-semibold text-sm">
+      <a href="#about" class="hover:text-black transition">About</a>
+      <a href="#contract" class="hover:text-black transition">Contract</a>
+      <a href="#tokenomics" class="hover:text-black transition">Tokenomics</a>
+      <a href="#proof" class="hover:text-black transition">Proof</a>
+      <a href="#socials" class="hover:text-black transition">Community</a>
+    </nav>
+    <!-- Mobile Hamburger -->
+    <button id="menu-btn" class="md:hidden text-black focus:outline-none">
+      <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu (slide down) -->
+  <div id="mobiMenu" class="mobi-menu md:hidden mt-3">
+    <div class="flex flex-col gap-3 pb-2 font-semibold text-sm">
+      <a href="#about" class="py-2 px-4 rounded-lg bg-pink-300/50 hover:bg-white border border-black/20">About</a>
+      <a href="#contract" class="py-2 px-4 rounded-lg bg-pink-300/50 hover:bg-white border border-black/20">Contract</a>
+      <a href="#tokenomics" class="py-2 px-4 rounded-lg bg-pink-300/50 hover:bg-white border border-black/20">Tokenomics</a>
+      <a href="#proof" class="py-2 px-4 rounded-lg bg-pink-300/50 hover:bg-white border border-black/20">Proof</a>
+      <a href="#socials" class="py-2 px-4 rounded-lg bg-pink-300/50 hover:bg-white border border-black/20">Community</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<section class="relative w-full h-screen overflow-hidden">
+  <img src="assets/hero-bg.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Hero BG">
+  <div class="absolute inset-0 bg-black/55"></div>
+  <div class="relative h-full flex items-end md:items-center">
+    <div class="px-6 md:px-12 pb-16 md:pb-0 max-w-[1400px] w-full mx-auto">
+      <div class="flex flex-col gap-8 reveal">
+        <h1 class="font-display hero-stroke text-5xl sm:text-7xl lg:text-[120px] leading-[0.9]">
+  MOMO<br>
+  <span class="text-pink-200 hero-stroke">BONK’S SISTER</span>
+</h1>
+
+        <p class="text-white/90 font-semibold max-w-xl text-base sm:text-lg leading-relaxed">
+          SHIBA POWER • COMMUNITY • PURE MEME ENERGY
+        </p>
+        <div class="flex gap-5 flex-wrap">
+          <a href="https://raydium.io/swap/?outputMint=G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk&inputMint=sol" class="btn-primary">
+            BUY MOMO
+          </a>
+          <a href="https://dexscreener.com/solana/epvwqejcnenvsnyecma2955bgtqjk2ptxuggrvtiffg2" class="btn-primary !bg-black !text-white">
+            DEXSCREENER
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="assets/momo-mini2.png" class="absolute top-8 right-8 w-32 animate-bob reveal reveal-delay-2" alt="Sticker">
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="relative w-full bg-[#FFD3E6] py-24">
+  <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <h2 class="font-display comic-outline hero-stroke text-5xl md:text-7xl mb-6">ABOUT MOMO</h2>
+      <p class="text-lg font-semibold tracking-wide leading-relaxed mb-4">
+        MOMO IS THE CHEEKY SISTER OF BONK – PASTEL PINK ENERGY READY TO POUNCE.
+      </p>
+      <p class="text-base md:text-lg leading-relaxed">
+        BORN ON SOLANA. BUILT FOR FUN, COMMUNITY & A KAWAII DASH OF MEME MAGIC.
+        SHE FETCHES GAINS — NOT STICKS. JOIN THE PACK & RUN WITH MOMO.
+      </p>
+    </div>
+    <div class="relative reveal reveal-delay-1">
+      <img src="assets/momo-about-rectangular.png"
+           class="w-full rounded-2xl border-4 border-black shadow-[8px_8px_0_#000]" alt="About MOMO">
+      <img src="assets/momo-mini1.png"
+           class="absolute -bottom-6 -right-4 w-32 rotate-3 drop-shadow animate-bob" alt="">
+    </div>
+  </div>
+</section>
+
+
+<a href="https://raydium.io/swap/?outputMint=G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk&inputMint=sol" target="_blank" class="block">
+<div class="marquee-auto">
+  <div class="marquee-auto__inner" id="momoMarquee">
+    <span>✨ $MOMO LIVE NOW ✨</span>
+    <span>SHIBA POWER • MEME ENERGY</span>
+    <span>🐶 BUY $MOMO</span>
+    <span>$MOMO LIVE NOW</span>
+  </div>
+</div>
+
+<style>
+.marquee-auto{
+  overflow:hidden;
+  border-top:4px solid #db2777;
+  border-bottom:4px solid #db2777;
+  background:linear-gradient(90deg,#f9a8d4,#ec4899,#f9a8d4);
+  padding:.6rem 0;
+  position:relative;
+}
+.marquee-auto__inner{
+  display:inline-flex;
+  gap:4rem;
+  font-weight:800;
+  font-size:0.95rem;
+  letter-spacing:.25em;
+  white-space:nowrap;
+  color:#fff;
+  animation:marqueeRun var(--marquee-duration,18s) linear infinite;
+}
+.marquee-auto__inner span{
+  filter:drop-shadow(2px 2px 0 #ff3da1);
+}
+@keyframes marqueeRun{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(calc(-1 * var(--marquee-shift)))}
+}
+</style>
+
+<script>
+(function(){
+  const el = document.getElementById('momoMarquee');
+  // дублируем контент до >2 ширин контейнера
+  const parentWidth = el.parentElement.offsetWidth;
+  while (el.scrollWidth < parentWidth*2){
+    el.innerHTML += el.innerHTML;
+  }
+  // фактический сдвиг = половина (первая “логическая” длина)
+  const shift = el.scrollWidth/2;
+  el.style.setProperty('--marquee-shift', shift + 'px');
+  // опционально: скорость пропорциональна длине (константа ~100px/с)
+  const duration = shift / 100; // сек
+  el.style.setProperty('--marquee-duration', duration + 's');
+})();
+</script>
+</a>
+
+
+
+<!-- CONTRACT -->
+<section id="contract" class="w-full bg-[#FFE9F4] py-24">
+  <div class="max-w-[1100px] mx-auto px-6 md:px-12 flex flex-col items-center gap-10">
+    <h2 class="font-display comic-outline hero-stroke text-5xl md:text-6xl reveal">CONTRACT</h2>
+
+    <div id="contractCard"
+         onclick="copyContract()"
+         class="reveal cursor-pointer select-none font-mono text-sm md:text-base bg-white/90 backdrop-blur
+                px-6 md:px-10 py-4 rounded-full border-4 border-black shadow-[6px_6px_0_#000]
+                transition hover:-translate-y-1 hover:shadow-[10px_10px_0_#000]">
+      <span id="contractValue">G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk</span>
+    </div>
+
+    <p id="copiedMsg" class="text-sm font-semibold text-pink-700 opacity-0 transition">Copied!</p>
+  </div>
+</section>
+
+<script>
+function copyContract() {
+  const text = document.getElementById('contractValue').textContent.trim();
+
+  navigator.clipboard.writeText(text).then(() => {
+    // Снимаем любое выделение (если браузер что-то подсветил)
+    const sel = window.getSelection();
+    if (sel && sel.removeAllRanges) sel.removeAllRanges();
+
+    // Показать сообщение
+    const msg = document.getElementById('copiedMsg');
+    msg.classList.remove('opacity-0');
+    msg.classList.add('opacity-100');
+
+    // Лёгкая подсветка рамки для фидбэка
+    const card = document.getElementById('contractCard');
+    card.classList.add('ring-4','ring-pink-400');
+    setTimeout(() => {
+      msg.classList.add('opacity-0');
+      msg.classList.remove('opacity-100');
+      card.classList.remove('ring-4','ring-pink-400');
+    }, 1000);
+  });
+}
+</script>
+
+<style>
+#contractCard, #contractCard * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+/* (опционально) если вдруг выделение появится — делаем его невидимым */
+/*
+::selection {
+  background: transparent;
+  color: inherit;
+}
+*/
+</style>
+
+
+<!-- GRID (Tokenomics & How To Buy) -->
+<section id="tokenomics" class="w-full grid md:grid-cols-2 border-y-4 border-black">
+  <div class="relative bg-[#FFE7AF] p-14 min-h-[480px] flex flex-col justify-between reveal">
+    <div>
+      <h3 class="font-display comic-outline hero-stroke text-5xl md:text-6xl mb-6">TOKENOMICS</h3>
+      <ul class="space-y-2 font-semibold text-lg">
+        <li>• SUPPLY 1B</li>
+        <li>• 0% TAX</li>
+        <li>• LP BURNED</li>
+        <li>• CEX READY</li>
+      </ul>
+    </div>
+    <a href="https://dexscreener.com/solana/epvwqejcnenvsnyecma2955bgtqjk2ptxuggrvtiffg2" class="btn-primary w-max">CHART</a>
+    <img src="assets/momo-mini3.png" class="absolute bottom-4 right-4 w-28 animate-bob" alt="">
+  </div>
+  <div class="relative bg-[#FFC6E1] p-14 min-h-[480px] flex flex-col justify-between reveal reveal-delay-1">
+    <div>
+      <h3 class="font-display comic-outline hero-stroke text-5xl md:text-6xl mb-6">HOW TO BUY</h3>
+      <ol class="list-decimal list-inside space-y-1 font-semibold">
+        <li>Create wallet (Phantom)</li>
+        <li>Buy or send SOL</li>
+        <li>Open Raydium</li>
+        <li>Swap SOL → MOMO</li>
+        <li>Join Community</li>
+      </ol>
+    </div>
+    <a href="https://raydium.io/swap/?outputMint=G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk&inputMint=sol" class="btn-primary w-max">RAYDIUM</a>
+    <img src="assets/momo-mini4.png" class="absolute bottom-4 left-4 w-28 animate-bob" alt="">
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof" class="py-24 bg-gray-50">
+  <div class="max-w-[1700px] mx-auto px-6 md:px-12">
+    <div class="reveal flex flex-col items-center gap-10">
+      <h2 class="font-display comic-outline hero-stroke text-5xl md:text-7xl">PROOF</h2>
+      <div class="bg-white p-10 rounded-3xl shadow-[8px_8px_0_#000] border-4 border-black max-w-3xl w-full reveal reveal-delay-1">
+        <div class="relative">
+          <img src="assets/proof-image.png"
+               alt="Proof Image"
+               class="w-full h-auto rounded-xl border-4 border-black transition-transform duration-500 hover:scale-[1.03]" />
+        </div>
+        <p class="text-base md:text-lg text-gray-800 font-semibold mt-6 leading-relaxed text-center">
+          «@balltze: MOMO is my lost sister» — Bonk himself, April 17, 2024
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIALS -->
+<section id="socials" class="py-20 bg-pink-50">
+  <div class="max-w-[1200px] mx-auto px-6 md:px-12 text-center reveal">
+    <h2 class="font-display comic-outline hero-stroke text-5xl md:text-6xl mb-10">COMMUNITY</h2>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-10">
+
+      <a href="https://x.com/Momo_bonk"
+         target="_blank" rel="noopener"
+         class="group relative block w-[180px] sm:w-[200px]">
+        <img src="assets/twitter.png"
+             alt="Twitter / X"
+             class="w-full h-auto rounded-2xl transition
+                    group-hover:scale-105 group-active:scale-95" />
+        <span class="sr-only">Go to MOMO on X / Twitter</span>
+      </a>
+
+      <a href="https://www.instagram.com/shibainumomo0217/"
+         target="_blank" rel="noopener"
+         class="group relative block w-[180px] sm:w-[200px]">
+        <img src="assets/inst.png"
+             alt="Instagram"
+             class="w-full h-auto rounded-2xl transition
+                    group-hover:scale-105 group-active:scale-95" />
+        <span class="sr-only">Go to MOMO on Instagram</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative py-10 bg-white text-center text-gray-700 text-sm border-t-4 border-black">
+  <div class="mb-4 flex justify-center items-center space-x-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8m0 0v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8m18 0L12 13 3 8" />
+    </svg>
+    <a href="mailto:momo.bonk1@gmail.com" class="text-pink-600 hover:underline font-medium">
+      momo.bonk1@gmail.com
+    </a>
+  </div>
+  © 2025 MOMO Coin
+  <img src="assets/footer.png" alt="MOMO Footer" class="absolute bottom-0 left-0 w-32 md:w-40 select-none pointer-events-none">
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+  // Intersection Observer reveal
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // Copy contract
+  function copyContract(){
+    const text='G4zwEA9NSd3nMBbEj31MMPq2853Brx2oGsKzex3ebonk';
+    navigator.clipboard.writeText(text);
+    const card=document.getElementById('contractCard');
+    const msg=document.getElementById('copiedMsg');
+    card.classList.add('copied-anim','bg-pink-100');
+    msg.classList.add('opacity-100');
+    setTimeout(()=>{
+      card.classList.remove('copied-anim','bg-pink-100');
+      msg.classList.remove('opacity-100');
+    },900);
+  }
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobiMenu = document.getElementById('mobiMenu');
+  menuBtn.addEventListener('click', () => {
+    mobiMenu.classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
